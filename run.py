@@ -2,7 +2,7 @@ import os
 import re
 
 
-def inputs():
+def inputs() -> str:
     while True:
         info = input("输入文件夹名称：")
         if info != "" and info is not None:
@@ -11,9 +11,10 @@ def inputs():
             print("请输入文件夹名！")
 
 
-def file_list(file_path):
+def file_list(file_path: str) -> list:
     dir_list = os.listdir(file_path)
-    return sorted(dir_list, key=lambda x: os.path.getmtime(os.path.join(file_path, x))) if dir_list else ""
+    return sorted(dir_list, key=lambda x: os.path.getmtime(os.path.join(file_path, x))) \
+        if dir_list else []
 
 
 def merge_file(files_name: str):
